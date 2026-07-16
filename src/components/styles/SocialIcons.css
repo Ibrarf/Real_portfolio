@@ -1,0 +1,128 @@
+.icons-section {
+  position: fixed;
+  max-width: var(--cMaxWidth);
+  width: var(--cWidth);
+  bottom: 0;
+  z-index: 99;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.social-icons {
+  position: absolute;
+  left: -6px;
+  bottom: 25px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 999;
+}
+
+/* ─── Card Base ─── */
+.social-icon-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-icon-card:hover {
+  color: #fff;
+  transform: scale(1.08);
+  border-color: transparent;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── Background Fill ─── */
+.si-bg {
+  display: none;
+}
+
+/* ─── Icon ─── */
+.si-icon {
+  font-size: 18px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+/* ─── Label (hidden) ─── */
+.si-label {
+  display: none;
+}
+
+/* ─── WhatsApp ─── */
+[data-brand="whatsapp"]:hover {
+  background: #25D366;
+  color: #fff;
+}
+
+/* ─── LinkedIn ─── */
+[data-brand="linkedin"]:hover {
+  background: #0A66C2;
+  color: #fff;
+}
+
+/* ─── Email ─── */
+[data-brand="email"]:hover {
+  background: #EA4335;
+  color: #fff;
+}
+
+/* ─── Resume Button ─── */
+.resume-button {
+  position: absolute;
+  z-index: 99;
+  display: flex;
+  gap: 5px;
+  bottom: 40px;
+  right: 0;
+  width: auto;
+  text-wrap: nowrap;
+  letter-spacing: 4px;
+  font-size: 15px;
+  line-height: 15px;
+  font-weight: 600;
+  color: #5e5e5e;
+  cursor: pointer;
+  transition: 0.5s;
+  transform-origin: left bottom;
+  transform: translateX(100%) rotateZ(-90deg);
+}
+.resume-button:hover {
+  color: #fff;
+}
+div.resume-button span {
+  color: #fff;
+  font-size: 17px;
+  margin-top: -1px;
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (min-width: 900px) {
+  .social-icons {
+    display: flex;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .resume-button {
+    transform: none;
+    font-size: 20px;
+    line-height: 20px;
+  }
+  div.resume-button span {
+    font-size: 23px;
+    margin-top: -1.5px;
+  }
+}
