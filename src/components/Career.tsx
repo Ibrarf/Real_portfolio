@@ -56,11 +56,12 @@ const experiences = [
     meta: "2024 to 2025 / Full time (Remote)",
     desc: [
       "Designed and implemented complex automation workflows using N8N to optimize multi department operations across sales, marketing, and client management.",
+      "Automated social media operations across LinkedIn and other platforms, including scheduled content publishing, engagement tracking, and lead capture pipelines.",
       "Integrated CRM platforms, email marketing tools, and payment gateways to create seamless automated client management pipelines.",
       "Developed custom automations that reduced manual tasks by 40%, saving the team an estimated 15+ hours per week.",
       "Provided continuous monitoring, troubleshooting, and optimization for production automation pipelines."
     ],
-    tools: ["N8N", "CRM", "Email Marketing", "Payment Gateways"]
+    tools: ["N8N", "Social Media Automation", "LinkedIn", "CRM", "Email Marketing", "Payment Gateways"]
   },
   {
     role: "AI Automation & Software Engineer",
@@ -71,11 +72,13 @@ const experiences = [
     meta: "2023 to 2024 / Full time (Remote)",
     desc: [
       "Built internal systems and automation infrastructure for a debt management company, handling client communication, payment tracking, and compliance reporting.",
+      "Built and customized complete CRM systems from the ground up, tailored to client onboarding, pipeline management, and operational workflows.",
+      "Worked extensively with GoHighLevel (GHL), building out funnels, pipelines, automated communication sequences, and full CRM backend automations.",
       "Designed and deployed AI powered virtual assistants that streamlined client onboarding and reduced support ticket volume by 35%.",
       "Created automated reporting dashboards and financial tracking systems using Google Sheets integrations and webhook driven pipelines.",
       "Collaborated with cross functional teams of developers, account managers, and compliance officers to ensure seamless integration of automation tools."
     ],
-    tools: ["AI Automation", "Software Engineering", "Google Sheets", "Webhooks"]
+    tools: ["AI Automation", "GoHighLevel (GHL)", "CRM Development", "Software Engineering", "Google Sheets", "Webhooks"]
   },
   {
     role: "Marketing Technology Lead",
@@ -83,7 +86,7 @@ const experiences = [
     link: "#",
     year: "2022 to 2023",
     flag: "",
-    meta: "Sep 2022 to 2023 / Full time (On Site)",
+    meta: "Founding Team / Sep 2022 to 2023 / Full time (On Site)",
     desc: [
       "Designed and executed comprehensive digital marketing strategies across SEO, Meta Ads, and social media that significantly increased brand reach and lead generation.",
       "Managed end to end social media campaigns and content calendars, driving measurable growth in customer engagement and conversion rates.",
@@ -108,14 +111,18 @@ const Career = () => {
           <div className="heading-glow"></div>
         </div>
         <div className="career-info">
-          <div className="career-timeline">
-            <div className="career-dot"></div>
+          <div className="career-rail">
+            <div className="career-rail-dot"></div>
           </div>
-          
+
           {experiences.map((exp, index) => (
-            <div className="career-info-box" key={index}>
-              <div className="career-info-in">
-                <div className="career-role">
+            <div className="career-card" key={index}>
+              <div className="career-node">
+                <span className="career-node-num">{String(index + 1).padStart(2, "0")}</span>
+              </div>
+              <div className="career-card-inner">
+                <div className="career-year-badge">{exp.year}</div>
+                <div className="career-card-head">
                   <h4>{exp.role}</h4>
                   <h5 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                     {exp.flag && <img src={exp.flag} alt={`${exp.company} Country`} style={{ borderRadius: "2px", width: "24px", height: "18px", boxShadow: "0 0 5px rgba(0,0,0,0.5)" }} />}
@@ -123,28 +130,27 @@ const Career = () => {
                       <a href={exp.link} target="_blank" data-cursor="disable" style={{textDecoration: "underline", color: "inherit"}}>
                         {exp.company}
                       </a>
-                  ) : (
+                    ) : (
                       exp.company
                     )}
                   </h5>
                   {exp.meta && <p className="career-meta">{exp.meta}</p>}
                 </div>
-                <h3>{exp.year}</h3>
-              </div>
-              <div className="career-desc-wrap">
-                {Array.isArray(exp.desc) ? (
-                  <ul className="career-desc-list">
-                    {exp.desc.map((item, i) => (
-                      <li key={i}>{item}</li>
+                <div className="career-desc-wrap">
+                  {Array.isArray(exp.desc) ? (
+                    <ul className="career-desc-list">
+                      {exp.desc.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>{exp.desc}</p>
+                  )}
+                  <div className="career-tools">
+                    {exp.tools.map((tool, i) => (
+                      <span className="career-tag" key={i}>{tool}</span>
                     ))}
-                  </ul>
-                ) : (
-                  <p>{exp.desc}</p>
-                )}
-                <div className="career-tools">
-                  {exp.tools.map((tool, i) => (
-                    <span className="career-tag" key={i}>{tool}</span>
-                  ))}
+                  </div>
                 </div>
               </div>
             </div>
