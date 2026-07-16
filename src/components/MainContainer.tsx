@@ -4,6 +4,7 @@ import Career from "./Career";
 import Contact from "./Contact";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
+import Skills from "./Skills";
 import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
@@ -39,6 +40,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
             <Landing>{!isDesktopView && children}</Landing>
             <About />
             <WhatIDo />
+            <Skills />
             <Career />
             <Work />
             {isDesktopView && (
