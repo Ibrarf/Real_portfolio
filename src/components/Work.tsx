@@ -12,35 +12,43 @@ const projects = [
     link: ""
   },
   {
-    title: "2. AI Voice Agents",
+    title: "2. Custom White-Label CRM",
+    category: "CRM Systems & Client Ops",
+    tools: "Custom CRM, White-Label, Automations",
+    image: "/images/Solidx.png",
+    link: "",
+    isNDA: true
+  },
+  {
+    title: "3. AI Voice Agents",
     category: "Conversational AI & Leads",
     tools: "VAPI, GoHighLevel, Custom LLMs",
     image: "https://i.ytimg.com/vi/1q6D5kjJ-uQ/hqdefault.jpg",
     link: "https://youtu.be/1q6D5kjJ-uQ"
   },
   {
-    title: "3. Car Dealership Chatbot",
+    title: "4. Car Dealership Chatbot",
     category: "High-Volume Customer AI",
     tools: "LangChain, RAG, Webhooks",
     image: "https://i.postimg.cc/4yrR8dqF/c-AR-DEALERSHIP.png",
     link: ""
   },
   {
-    title: "4. AI Social Media Shorts Generator",
+    title: "5. AI Social Media Shorts Generator",
     category: "Automated Content Creation",
     tools: "Make.com, Python, APIs",
     image: "https://i.postimg.cc/bJ732h1D/Social-Media-Shorts-Generation.png",
     link: ""
   },
   {
-    title: "5. HR AI Job Posting & Evaluation",
+    title: "6. HR AI Job Posting & Evaluation",
     category: "Workflow Automation",
     tools: "OpenAI, Scraping, Vector DBs",
     image: "https://i.postimg.cc/y8jQp2CG/HR-job-posting.png",
     link: ""
   },
   {
-    title: "6. GoHighLevel Full Setup",
+    title: "7. GoHighLevel Full Setup",
     category: "CRM Systems & Client Ops",
     tools: "GoHighLevel, Webhooks, Pipelines",
     image: "/images/Solidx.png",
@@ -48,14 +56,14 @@ const projects = [
     isNDA: true
   },
   {
-    title: "7. Financial Reports System",
+    title: "8. Financial Reports System",
     category: "Automated Dashboards",
     tools: "Google Sheets, Webhooks",
     image: "https://i.postimg.cc/hPg0FMr6/Payment-Processing-and-Order-Tracking-with-Google-Sheets.png",
     link: ""
   },
   {
-    title: "8. RAG Knowledge Agents",
+    title: "9. RAG Knowledge Agents",
     category: "Intelligent Search & Support",
     tools: "Vector DBs, Python, Prompt Eng.",
     image: "/images/Solidx.png",
@@ -63,35 +71,35 @@ const projects = [
     isNDA: true
   },
   {
-    title: "9. AI Email Automation System",
+    title: "10. AI Email Automation System",
     category: "Personalized Client Outreach",
     tools: "Email APIs, LangChain, N8N",
     image: "https://i.postimg.cc/ZYvQYf60/Email-Assistant.png",
     link: ""
   },
   {
-    title: "10. Twitter/X Data Scraper",
+    title: "11. Twitter/X Data Scraper",
     category: "Data Extraction & Market Intel",
     tools: "Python, Web Scraping",
     image: "https://i.postimg.cc/FFJrS5Ms/t-WEET-SCRAPER.png",
     link: ""
   },
   {
-    title: "11. AI Newsletter Generator",
+    title: "12. AI Newsletter Generator",
     category: "Content Pipeline",
     tools: "LLM APIs, Marketing Automation",
     image: "https://i.postimg.cc/ydcGVPbp/newsletter.png",
     link: ""
   },
   {
-    title: "12. LinkedIn Scraper & Outreach",
+    title: "13. LinkedIn Scraper & Outreach",
     category: "Lead Generation",
     tools: "Scraping, CRM Integrations",
     image: "https://i.postimg.cc/nLLdyTn5/Linked-In-Scraper-Outreach-Booster.png",
     link: ""
   },
   {
-    title: "13. LinkedIn Company Post Analyzer",
+    title: "14. LinkedIn Company Post Analyzer",
     category: "Data Intelligence",
     tools: "NLP, Python, AI Agents",
     image: "/images/Solidx.png",
