@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="0.5" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#a855f7"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- tile -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#0a0a12"/>
+  <rect x="2.5" y="2.5" width="59" height="59" rx="15.5" fill="none" stroke="url(#g)" stroke-width="1.5" opacity="0.9"/>
+
+  <!-- circuit accents -->
+  <g stroke="url(#g)" stroke-width="1.4" opacity="0.55" fill="none" stroke-linecap="round">
+    <path d="M8 20 H15"/>
+    <path d="M8 44 H15"/>
+    <path d="M56 20 H49"/>
+    <path d="M56 44 H49"/>
+    <circle cx="7" cy="20" r="1.4" fill="url(#g)" stroke="none"/>
+    <circle cx="7" cy="44" r="1.4" fill="url(#g)" stroke="none"/>
+    <circle cx="57" cy="20" r="1.4" fill="url(#g)" stroke="none"/>
+    <circle cx="57" cy="44" r="1.4" fill="url(#g)" stroke="none"/>
+  </g>
+
+  <!-- IA monogram -->
+  <g fill="url(#g)" filter="url(#glow)">
+    <rect x="19.5" y="18" width="4.5" height="28" rx="2"/>
+    <path d="M33 46 L40 18 L44.5 18 L51.5 46 L46.8 46 L45.3 39.5 L39.2 39.5 L37.7 46 Z M40.1 35.6 L44.4 35.6 L42.25 26.4 Z"/>
+  </g>
+</svg>
