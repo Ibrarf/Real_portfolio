@@ -21,13 +21,154 @@
   letter-spacing: 7px;
   font-weight: 400;
   color: var(--accentColor);
-  margin-bottom: 30px;
+  margin-bottom: 6px;
 }
 
 .about-content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+}
+
+/* Extras stay hidden until the section is in view, so they never show
+   through the hero while the About column slides up behind the character. */
+.about-badge,
+.about-title-line,
+.about-stats,
+.about-stack,
+.about-next-link {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.about-in-view .about-badge,
+.about-in-view .about-title-line,
+.about-in-view .about-stats,
+.about-in-view .about-stack,
+.about-in-view .about-next-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-in-view .about-badge { transition-delay: 0.05s; }
+.about-in-view .about-title-line { transition-delay: 0.15s; }
+.about-in-view .about-stats { transition-delay: 0.25s; }
+.about-in-view .about-stack { transition-delay: 0.35s; }
+.about-in-view .about-next-link { transition-delay: 0.45s; }
+
+/* ─── Eyebrow badge ─── */
+.about-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accentColor);
+  background: rgba(94, 234, 212, 0.08);
+  border: 1px solid rgba(94, 234, 212, 0.22);
+  padding: 8px 18px;
+  border-radius: 100px;
+  margin-bottom: 4px;
+}
+
+.about-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accentColor);
+  animation: about-pulse 2s infinite ease-in-out;
+}
+
+@keyframes about-pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(94, 234, 212, 0.6); }
+  70% { transform: scale(1.15); box-shadow: 0 0 0 9px rgba(94, 234, 212, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(94, 234, 212, 0); }
+}
+
+/* Accent underline beneath the heading */
+.about-title-line {
+  display: block;
+  width: 64px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accentColor), rgba(94, 234, 212, 0));
+  margin-top: -6px;
+  margin-bottom: 4px;
+}
+
+/* ─── Highlight tiles ─── */
+.about-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.about-stat {
+  flex: 1 1 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.about-stat:hover {
+  transform: translateY(-4px);
+  border-color: rgba(94, 234, 212, 0.35);
+  background: rgba(94, 234, 212, 0.06);
+}
+
+.about-stat-num {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--accentColor);
+}
+
+.about-stat-label {
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: rgba(234, 229, 236, 0.55);
+}
+
+/* ─── Tech-stack chips ─── */
+.about-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.about-chip {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  color: rgba(234, 229, 236, 0.85);
+  padding: 7px 16px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.about-chip:hover {
+  color: var(--accentColor);
+  border-color: rgba(94, 234, 212, 0.4);
+  background: rgba(94, 234, 212, 0.08);
 }
 
 .about-me p {
@@ -85,6 +226,49 @@
   transform: translateY(3px);
 }
 
+/* ─── Phones ─── */
+@media only screen and (max-width: 600px) {
+  .about-me {
+    padding: 40px 0;
+    padding-bottom: 0;
+  }
+  .about-me h3 {
+    font-size: 21px;
+    letter-spacing: 5px;
+  }
+  .about-me .about-intro {
+    font-size: 26px;
+    line-height: 33px;
+  }
+  .about-me .about-detail {
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .about-badge {
+    font-size: 10.5px;
+    letter-spacing: 1.5px;
+    padding: 7px 14px;
+  }
+  .about-stats {
+    gap: 10px;
+  }
+  .about-stat {
+    flex: 1 1 90px;
+    padding: 14px 10px;
+    border-radius: 14px;
+  }
+  .about-stat-num {
+    font-size: 23px;
+  }
+  .about-stat-label {
+    font-size: 10.5px;
+  }
+  .about-chip {
+    font-size: 12px;
+    padding: 6px 13px;
+  }
+}
+
 @media only screen and (min-width: 600px) {
   .about-section {
     justify-content: center;
@@ -116,6 +300,10 @@
   .about-me p {
     font-size: 1.9vw;
     line-height: 2.3vw;
+  }
+  .about-me .about-detail {
+    font-size: 1.05vw;
+    line-height: 1.7vw;
   }
 }
 @media only screen and (min-width: 1950px) {

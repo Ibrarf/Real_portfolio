@@ -27,17 +27,25 @@ const Scene = () => {
       const aspect = container.width / container.height;
       const scene = sceneRef.current;
 
+      // Adapt quality to the device. Weak machines (few CPU cores / little
+      // RAM) skip antialiasing + shadows and render at 1x, which is far
+      // cheaper while keeping the character fully functional.
+      const lowEnd =
+        (navigator.hardwareConcurrency || 8) <= 4 ||
+        ((navigator as any).deviceMemory || 8) <= 4;
+      const maxPixelRatio = lowEnd ? 1 : 1.5;
+
       const renderer = new THREE.WebGLRenderer({
         alpha: true,
-        antialias: true,
+        antialias: !lowEnd,
         powerPreference: "high-performance",
       });
       renderer.setSize(container.width, container.height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxPixelRatio));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.2;
       renderer.outputColorSpace = THREE.SRGBColorSpace;
-      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.enabled = !lowEnd;
       renderer.shadowMap.type = THREE.PCFSoftShadowMap;
       canvasDiv.current.appendChild(renderer.domElement);
 
@@ -110,8 +118,24 @@ const Scene = () => {
         landingDiv.addEventListener("touchstart", onTouchStart);
         landingDiv.addEventListener("touchend", onTouchEnd);
       }
+      // Only render while the hero is actually on screen and the tab is
+      // active. When the user scrolls past it (or switches tabs) the GPU
+      // goes idle, so the rest of the page stays smooth even on weak devices.
+      let isVisible = true;
+      const visibilityObserver = new IntersectionObserver(
+        ([entry]) => {
+          isVisible = entry.isIntersecting;
+        },
+        { threshold: 0.01 }
+      );
+      if (canvasDiv.current) visibilityObserver.observe(canvasDiv.current);
+
+      let rafId = 0;
       const animate = () => {
-        requestAnimationFrame(animate);
+        rafId = requestAnimationFrame(animate);
+        // Always drain the clock so animation doesn't jump after a pause.
+        const delta = clock.getDelta();
+        if (!isVisible || document.hidden) return;
         if (headBone) {
           handleHeadRotation(
             headBone,
@@ -123,7 +147,6 @@ const Scene = () => {
           );
           light.setPointLight(screenLight);
         }
-        const delta = clock.getDelta();
         if (mixer) {
           mixer.update(delta);
         }
@@ -132,6 +155,8 @@ const Scene = () => {
       animate();
       return () => {
         clearTimeout(debounce);
+        cancelAnimationFrame(rafId);
+        visibilityObserver.disconnect();
         scene.clear();
         renderer.dispose();
         window.removeEventListener("resize", () =>

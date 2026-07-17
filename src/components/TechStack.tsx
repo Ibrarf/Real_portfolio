@@ -171,27 +171,38 @@ const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    // Throttle to one layout read per frame so scrolling never triggers
+    // repeated getBoundingClientRect() reflows ("layout thrashing").
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const workEl = document.getElementById("work");
+      if (!workEl) return;
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const threshold = document
-        .getElementById("work")!
-        .getBoundingClientRect().top;
+      const threshold = workEl.getBoundingClientRect().top;
       setIsActive(scrollY > threshold);
     };
-    document.querySelectorAll(".header a").forEach((elem) => {
-      const element = elem as HTMLAnchorElement;
-      element.addEventListener("click", () => {
-        const interval = setInterval(() => {
-          handleScroll();
-        }, 10);
-        setTimeout(() => {
-          clearInterval(interval);
-        }, 1000);
-      });
-    });
-    window.addEventListener("scroll", handleScroll);
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    const headerLinks = document.querySelectorAll(".header a");
+    const onNavClick = () => {
+      // Re-check a few times while the smooth-scroll settles after a click.
+      let count = 0;
+      const id = setInterval(() => {
+        onScroll();
+        if (++count > 20) clearInterval(id);
+      }, 50);
+    };
+    headerLinks.forEach((el) => el.addEventListener("click", onNavClick));
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", onScroll);
+      headerLinks.forEach((el) => el.removeEventListener("click", onNavClick));
     };
   }, []);
   const materials = useMemo(() => {
@@ -221,6 +232,8 @@ const TechStack = () => {
 
       <Canvas
         shadows
+        dpr={[1, 1.5]}
+        frameloop={isActive ? "always" : "never"}
         gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
         camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
         onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}

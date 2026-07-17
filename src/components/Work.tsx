@@ -15,7 +15,7 @@ const projects = [
     title: "2. Custom White-Label CRM",
     category: "CRM Systems & Client Ops",
     tools: "Custom CRM, White-Label, Automations",
-    image: "/images/Solidx.png",
+    image: "/images/Solidx.webp",
     link: "",
     isNDA: true
   },
@@ -51,7 +51,7 @@ const projects = [
     title: "7. GoHighLevel Full Setup",
     category: "CRM Systems & Client Ops",
     tools: "GoHighLevel, Webhooks, Pipelines",
-    image: "/images/Solidx.png",
+    image: "/images/Solidx.webp",
     link: "",
     isNDA: true
   },
@@ -66,7 +66,7 @@ const projects = [
     title: "9. RAG Knowledge Agents",
     category: "Intelligent Search & Support",
     tools: "Vector DBs, Python, Prompt Eng.",
-    image: "/images/Solidx.png",
+    image: "/images/Solidx.webp",
     link: "",
     isNDA: true
   },
@@ -102,7 +102,7 @@ const projects = [
     title: "14. LinkedIn Company Post Analyzer",
     category: "Data Intelligence",
     tools: "NLP, Python, AI Agents",
-    image: "/images/Solidx.png",
+    image: "/images/Solidx.webp",
     link: "",
     isNDA: true
   }
