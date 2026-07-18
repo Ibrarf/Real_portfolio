@@ -12,34 +12,11 @@ export function initialFX() {
     delay: 1,
   });
 
-  // Wait until the hero intro has fully played before scrolling to any
-  // deep-linked section. Scrolling too early (mid-intro) interrupts the
-  // landing-text reveal and leaves the hero blank on /about, /contact, etc.
-  setTimeout(() => {
-    // Determine the section from either the hash (if any) or the pathname
-    let targetId = window.location.hash || window.location.pathname;
-
-    // Remove slash if there is one
-    if (targetId.startsWith('/')) {
-      targetId = targetId.substring(1);
-    }
-
-    // Add '#' back just for querying the DOM if it doesn't have it
-    if (targetId && !targetId.startsWith('#')) {
-       targetId = "#" + targetId;
-    }
-
-    const target = targetId === "#techstack" ? ".techstack" : targetId;
-    if (target && target !== "#") {
-      try {
-        if (document.querySelector(target)) {
-          smoother.scrollTo(target, true, "top 130px");
-        }
-      } catch (e) {
-        // invalid selector
-      }
-    }
-  }, 2200);
+  // NOTE: We intentionally do NOT auto-scroll to a deep-linked section on
+  // load. The hero's scroll choreography fades the landing text as you move
+  // down, and doing that during the initial load left the hero blank on
+  // /about, /contact, etc. The URL is normalized to "/" in main.tsx so every
+  // entry point behaves like the (working) homepage.
 
   var landingText = new SplitText(
     [".landing-info h3", ".landing-intro h2", ".landing-intro h1"],
