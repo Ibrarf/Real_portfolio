@@ -30,6 +30,17 @@
   gap: 16px;
 }
 
+/* The whole About column stays hidden until the section is actually in
+   view. Combined with the slide-up transition this stops second-section
+   content from overlapping the hero when scrolling back to the top. */
+.about-content {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.about-content.about-in-view {
+  opacity: 1;
+}
+
 /* Extras stay hidden until the section is in view, so they never show
    through the hero while the About column slides up behind the character. */
 .about-badge,

@@ -19,14 +19,12 @@ const About = () => {
     // Reveal the extras only when the section reaches the middle of the
     // viewport. This prevents them from showing through the hero while the
     // About column is slid up behind the 3D character.
+    // Toggle BOTH ways: reveal when the About section is centered in the
+    // viewport, and hide again when it isn't — so the About column never
+    // shows through the hero while it's slid up behind the 3D character.
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0, rootMargin: "-35% 0px -35% 0px" }
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0, rootMargin: "-25% 0px -25% 0px" }
     );
     observer.observe(el);
     return () => observer.disconnect();
