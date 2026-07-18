@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./styles/About.css";
 
 const stack = ["N8N", "GoHighLevel", "Make.com", "LangChain", "Python", "SQL"];
@@ -14,22 +15,24 @@ const About = () => {
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    // Reveal based on SCROLL POSITION, not element visibility. On desktop the
-    // About column is transformed up into the hero, so an IntersectionObserver
-    // would wrongly report it "in view" and reveal it over the character.
-    // Instead, only show the content once the user has scrolled past ~65% of
-    // the first screen — i.e. actually left the hero.
-    let shown = false;
-    const onScroll = () => {
-      const past = window.scrollY > window.innerHeight * 0.65;
-      if (past !== shown) {
-        shown = past;
-        setInView(past);
-      }
+    // Reveal the About content with a ScrollTrigger tied to the section. This
+    // is integrated with the smooth-scroller, so it fires correctly whether
+    // the user scrolls manually OR jumps here via the nav (which raw scroll
+    // listeners miss). It stays hidden while the hero is on screen — the About
+    // column is transformed up into the hero, so revealing early bleeds over
+    // the 3D character — and reveals as soon as the section enters view.
+    const st = ScrollTrigger.create({
+      trigger: ".about-section",
+      start: "top 65%",
+      end: "bottom top",
+      onToggle: (self) => setInView(self.isActive),
+    });
+    // Recalculate once everything (fonts, 3D, lazy sections) has settled.
+    const refresh = setTimeout(() => ScrollTrigger.refresh(), 300);
+    return () => {
+      clearTimeout(refresh);
+      st.kill();
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
