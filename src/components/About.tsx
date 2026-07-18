@@ -14,20 +14,22 @@ const About = () => {
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    const el = contentRef.current;
-    if (!el) return;
-    // Reveal the extras only when the section reaches the middle of the
-    // viewport. This prevents them from showing through the hero while the
-    // About column is slid up behind the 3D character.
-    // Toggle BOTH ways: reveal when the About section is centered in the
-    // viewport, and hide again when it isn't — so the About column never
-    // shows through the hero while it's slid up behind the 3D character.
-    const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { threshold: 0, rootMargin: "-25% 0px -25% 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
+    // Reveal based on SCROLL POSITION, not element visibility. On desktop the
+    // About column is transformed up into the hero, so an IntersectionObserver
+    // would wrongly report it "in view" and reveal it over the character.
+    // Instead, only show the content once the user has scrolled past ~65% of
+    // the first screen — i.e. actually left the hero.
+    let shown = false;
+    const onScroll = () => {
+      const past = window.scrollY > window.innerHeight * 0.65;
+      if (past !== shown) {
+        shown = past;
+        setInView(past);
+      }
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
