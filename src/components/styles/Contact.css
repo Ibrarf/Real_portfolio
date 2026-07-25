@@ -26,6 +26,12 @@
   max-width: 460px;
 }
 
+.contact-location {
+  font-size: 13px;
+  color: rgba(234, 229, 236, 0.45);
+  margin: -10px 0 0;
+}
+
 .contact-call-link {
   display: inline-flex;
   align-items: center;

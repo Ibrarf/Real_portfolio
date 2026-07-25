@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import About from "./About";
 import Contact from "./Contact";
 import Experience from "./Experience";
+import FAQ from "./FAQ";
 import Footer from "./Footer";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
@@ -33,6 +34,7 @@ const MainContainer = () => {
             <Experience />
             <Work />
             <Contact />
+            <FAQ />
             <Footer />
           </div>
         </div>

@@ -30,13 +30,13 @@ const About = () => {
 
         <p className="about-para">
           Hi there! I'm Ibrahim, an AI Automation Engineer and AI Specialist
-          with over 4 years of experience building intelligent systems for
-          international clients. I design scalable AI agents, voice
-          assistants, and custom CRM automations, helping businesses
-          eliminate manual work and scale faster through smart, modern
-          workflows. Beyond the terminal, I enjoy exploring new AI research
-          and mentoring people getting into automation. Let's connect and
-          bring your workflows to life.
+          based in Islamabad, Pakistan, with over 4 years of experience
+          building intelligent systems for clients across Pakistan and
+          internationally. I design scalable AI agents, voice assistants, and
+          custom CRM automations, helping businesses eliminate manual work and
+          scale faster through smart, modern workflows. Beyond the terminal, I
+          enjoy exploring new AI research and mentoring people getting into
+          automation. Let's connect and bring your workflows to life.
         </p>
 
         <a

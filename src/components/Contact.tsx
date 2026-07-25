@@ -19,6 +19,9 @@ const Contact = () => {
             if you have other requests or questions, don't hesitate to
             contact me.
           </p>
+          <p className="contact-location mono">
+            📍 Islamabad, Pakistan — available for remote &amp; on-site work worldwide
+          </p>
           <a
             href="https://calendly.com/ibrarfv/30min"
             target="_blank"

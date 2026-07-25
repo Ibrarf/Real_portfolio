@@ -11,7 +11,9 @@ const Footer = () => {
             <span className="footer-logo mono">IA</span>
             <span className="footer-email">ibrarfv@gmail.com</span>
           </div>
-          <p className="footer-tagline">AI Automation Engineer &amp; AI Specialist</p>
+          <p className="footer-tagline">
+            AI Automation Engineer &amp; AI Specialist — Islamabad, Pakistan
+          </p>
         </div>
 
         <div className="footer-media">

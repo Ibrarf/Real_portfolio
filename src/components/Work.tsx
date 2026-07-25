@@ -181,7 +181,7 @@ const Work = () => {
             <div className="project-thumb">
               <WorkImage
                 image={project.image}
-                alt={project.title}
+                alt={`${project.title} — ${project.category} project by Ibrahim Arif`}
                 link={project.link}
                 index={index}
                 isNDA={project.isNDA}
