@@ -19,6 +19,18 @@ const faqs = [
     q: "What tools does Ibrahim Arif specialize in as an N8N and automation expert?",
     a: "N8N, Make.com, GoHighLevel, LangChain, LangGraph, RAG chatbots, AI voice agents (VAPI), Python, SQL, and end-to-end CRM automation systems.",
   },
+  {
+    q: "What kind of AI automation projects has Ibrahim Arif built?",
+    a: "Ibrahim Arif has built AI voice agents, RAG chatbots, live Zoom meeting transcription systems, CRM automations (GoHighLevel and custom-built), AI email and social media outreach systems, and data scraping pipelines for clients in industries like hospitality, finance, and e-commerce.",
+  },
+  {
+    q: "Does Ibrahim Arif have experience working with international clients?",
+    a: "Yes. Ibrahim Arif has worked with clients in the US, UK, Ireland, and Canada on contract and freelance projects, building AI agents, N8N workflows, and CRM automation systems remotely from Islamabad, Pakistan.",
+  },
+  {
+    q: "Can Ibrahim Arif build a custom CRM or GoHighLevel automation for my business?",
+    a: "Yes. Ibrahim Arif designs and builds complete CRM systems and GoHighLevel implementations, including pipelines, automated communication sequences, and backend integrations tailored to a business's workflow.",
+  },
 ];
 
 const FAQ = () => {
