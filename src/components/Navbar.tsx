@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SocialIcons from "./SocialIcons";
 import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { initialFX } from "./utils/initialFX";
 import "./styles/Navbar.css";
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
@@ -16,11 +17,18 @@ const NAV_ITEMS = [
   { id: "contact", label: "Contact" },
 ];
 
+const SECTION_IDS = new Set(NAV_ITEMS.map((item) => item.id));
+
+function initialSectionFromUrl() {
+  const requestedId = window.location.pathname.replace(/^\//, "");
+  return SECTION_IDS.has(requestedId) ? requestedId : "landingDiv";
+}
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [active, setActive] = useState("landingDiv");
+  const [active, setActive] = useState(initialSectionFromUrl);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const smootherInstance = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
@@ -31,9 +39,45 @@ const Navbar = () => {
       ignoreMobileResize: true,
     });
     smoother = smootherInstance;
+    document.body.style.overflowY = "auto";
 
-    smootherInstance.scrollTop(0);
-    smootherInstance.paused(true);
+    // Land on whatever section the URL points to (e.g. a reload on
+    // /about-me) instead of always resetting to home. This runs in a layout
+    // effect — before the browser paints this component's first frame — and
+    // jumps instantly (no smooth animation), so there's nothing to "flash":
+    // the page is already positioned correctly by the time it's visible.
+    const targetId = initialSectionFromUrl();
+    const isHome = targetId === "landingDiv";
+    let resnapHandler: (() => void) | null = null;
+
+    if (isHome) {
+      smootherInstance.scrollTop(0);
+    } else {
+      // .scrollTo(target, false, position) — the instant-jump form — landed
+      // thousands of pixels short for sections deep in the page (seemingly a
+      // real limitation of ScrollSmoother's instant path with a "speed"
+      // multiplier configured). .offset() + scrollTop() computes the same
+      // position through the numeric API instead, which doesn't have that
+      // problem.
+      smootherInstance.scrollTop(smootherInstance.offset(`#${targetId}`, "top 130px"));
+
+      // ScrollSmoother measures total page height synchronously right here,
+      // before images (project thumbnails, etc.) have loaded — so for a
+      // section positioned after them, that first jump can land short of
+      // the real target. Once everything has actually loaded, refresh the
+      // measurement and jump again (still instant) to correct any drift.
+      resnapHandler = () => {
+        ScrollSmoother.refresh(true);
+        smootherInstance.scrollTop(smootherInstance.offset(`#${targetId}`, "top 130px"));
+      };
+      if (document.readyState === "complete") {
+        resnapHandler();
+      } else {
+        window.addEventListener("load", resnapHandler, { once: true });
+      }
+    }
+
+    initialFX(isHome);
 
     const links = Array.from(
       document.querySelectorAll<HTMLAnchorElement>(".header ul a")
@@ -77,6 +121,7 @@ const Navbar = () => {
     return () => {
       links.forEach((link) => link.removeEventListener("click", handleClick));
       window.removeEventListener("resize", handleResize);
+      if (resnapHandler) window.removeEventListener("load", resnapHandler);
       smootherInstance.kill();
     };
   }, []);
