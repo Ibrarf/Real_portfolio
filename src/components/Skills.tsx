@@ -46,7 +46,7 @@ const skillGroups = [
   },
   {
     title: "Tools",
-    skills: ["Docker", "AWS", "Cursor", "Claude", "Langfuse", "WordPress Dev", "Next.js"],
+    skills: ["Docker", "AWS", "Cursor", "Claude", "Langfuse", "WordPress Dev", "Next.js", ".NET", "TypeScript"],
   },
   {
     title: "Other",
