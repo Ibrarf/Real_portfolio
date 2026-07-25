@@ -1,0 +1,126 @@
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(5, 5, 7, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: modal-fade-in 0.2s ease;
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.project-modal {
+  position: relative;
+  width: min(700px, 100%);
+  max-height: 85vh;
+  overflow-y: auto;
+  background: #111114;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  animation: modal-pop-in 0.25s ease;
+}
+
+@keyframes modal-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.project-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(13, 13, 16, 0.7);
+  color: #eae5ec;
+  font-size: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.2s ease;
+}
+
+.project-modal-close:hover {
+  background: var(--accentLime);
+  color: var(--accentDark);
+  border-color: transparent;
+}
+
+.project-modal-image-wrap {
+  width: 100%;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-modal-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-modal-body {
+  padding: 22px 26px 28px;
+}
+
+.project-modal-title {
+  font-family: "Geist", sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: #eae5ec;
+  margin: 0 0 12px;
+}
+
+.project-modal-desc {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: rgba(234, 229, 236, 0.7);
+  margin: 0 0 18px;
+}
+
+.project-modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-modal-tag {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 100px;
+  border: 1px solid rgba(215, 255, 63, 0.3);
+  color: var(--accentLime);
+  background: rgba(215, 255, 63, 0.06);
+}
+
+@media only screen and (min-width: 700px) {
+  .project-modal-image-wrap {
+    height: 360px;
+  }
+
+  .project-modal-title {
+    font-size: 24px;
+  }
+}
