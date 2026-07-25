@@ -25,11 +25,19 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", onKeyDown);
-    document.body.style.overflow = "hidden";
+
+    // Only touch overflow-y, and restore it to the value the smooth-scroll
+    // setup actually relies on ("auto") rather than clearing it. The
+    // `overflow` shorthand sets BOTH overflow-x/-y as inline styles, so
+    // clearing it afterward wiped out the overflow-y:auto that Navbar sets
+    // up for GSAP ScrollSmoother, and body fell back to the stylesheet's
+    // base `overflow: hidden` — which blocks all scroll/wheel input until a
+    // full reload re-applies the inline override.
+    document.body.style.overflowY = "hidden";
 
     return () => {
       document.removeEventListener("keydown", onKeyDown);
-      document.body.style.overflow = "";
+      document.body.style.overflowY = "auto";
     };
   }, [project, onClose]);
 
