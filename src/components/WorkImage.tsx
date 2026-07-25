@@ -14,6 +14,7 @@ interface Props {
 const WorkImage = (props: Props) => {
   const [isVideo, setIsVideo] = useState(false);
   const [video, setVideo] = useState("");
+  const [imageFailed, setImageFailed] = useState(false);
   const handleMouseEnter = async () => {
     if (props.video) {
       setIsVideo(true);
@@ -60,7 +61,7 @@ const WorkImage = (props: Props) => {
   }
 
   return (
-    <div className="work-image" style={{ position: "relative", width: "100%", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
+    <div className="work-image" style={{ position: "relative", width: "100%", height: "100%", overflow: "hidden" }}>
       <a
         className="work-image-in"
         href={isYouTube ? props.link : "#"}
@@ -69,18 +70,35 @@ const WorkImage = (props: Props) => {
         onMouseLeave={() => setIsVideo(false)}
         target={isYouTube ? "_blank" : "_self"}
         data-cursor={isYouTube ? "disable" : "pointer"}
-        style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", position: "relative", minWidth: 0, cursor: isYouTube ? "pointer" : "zoom-in" }}
+        style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", height: "100%", position: "relative", minWidth: 0, cursor: isYouTube ? "pointer" : "zoom-in" }}
       >
-        {!isYouTube && (
+        {!isYouTube && !imageFailed && (
           <div className="work-link">
             <MdFullscreen />
           </div>
         )}
-        <img 
-          src={props.image} 
-          alt={props.alt} 
-          style={{ width: "100%", height: "350px", objectFit: "contain", borderRadius: "8px" }} 
-        />
+        {imageFailed ? (
+          <div className="nda-placeholder" style={{ width: "100%", height: "100%" }}>
+            <div className="nda-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <path d="M21 15l-5-5L5 21"></path>
+              </svg>
+            </div>
+            <div className="nda-text">
+              <h5>PREVIEW UNAVAILABLE</h5>
+              <p>Image source offline</p>
+            </div>
+          </div>
+        ) : (
+          <img
+            src={props.image}
+            alt={props.alt}
+            onError={() => setImageFailed(true)}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        )}
         {isYouTube && (
           <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", color: "#FF0000", fontSize: "5rem", filter: "drop-shadow(0px 0px 10px rgba(0,0,0,0.5))" }}>
             <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 576 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg>

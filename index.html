@@ -4,8 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="theme-color" content="#0a0a12" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+  <meta name="theme-color" content="#0d0d10" />
+  <style>
+    /* Inline so the dark background paints immediately on first parse —
+       this site's real CSS loads via JS module imports, which leaves a
+       brief gap (very visible as a white flash on a hard refresh) between
+       the browser's initial blank paint and JS finishing execution. */
+    html, body { background-color: #0d0d10; }
+  </style>
   <title>Ibrahim Arif | AI Automation Engineer & AI Specialist</title>
   <meta name="description" content="Ibrahim Arif — AI Automation Engineer, AI Engineer and AI Specialist with 3+ years of experience building scalable AI agents, N8N workflows, GoHighLevel automations, Make.com integrations, voice AI, RAG chatbots and complete CRM automation systems for global clients." />
   <meta name="keywords" content="Ibrahim Arif, Ibrahim Arif AI Engineer, Ibrahim Arif portfolio, AI Engineer, AI Automation Engineer, AI Automations Engineer, AI Specialist, AI Agents Developer, N8N Expert, N8N Developer, GoHighLevel Expert, Make.com Developer, Workflow Automation, CRM Automation, AI Voice Agents, RAG Chatbots, LangChain, LangGraph, Python, SQL, Automation Architect" />

@@ -1,96 +1,101 @@
+import { useRef, CSSProperties } from "react";
+import { useScrollReveal } from "./utils/useScrollReveal";
 import "./styles/Skills.css";
 
-const professionalSkills = [
-  "Teamwork and Collaboration",
-  "Strong Communication",
-  "Problem Solving and Analysis",
-  "Project Management",
-  "Client Relations",
-  "Agile Workflow Management",
-  "Cross-functional Collaboration"
-];
-
-const technicalSkills = [
-  "AI Automations",
-  "N8N",
-  "Go High Level",
-  "All CRM (Forth etc.)",
-  "AI Voice Agents",
-  "RAG Agents & Chatbots",
-  "WordPress Dev",
-  "Zapier / Make",
-  "Webhooks & APIs",
-  "Google Sheets Automation",
-  "LLM Integration",
-  "Azure AI",
-  "Prompt Engineering",
-  "CRM Setup & Backend",
-  "Data Scraping",
-  "Workflow Optimization",
-  "Live Transcription Systems",
-  "Python",
-  "JavaScript",
-  "Claude Code",
-  "OpenClaw",
-  "Next.js",
-  "MCP server",
-  "LangChain",
-  "LangGraph",
-  "Vector databases",
-  "AWS",
-  "Docker",
-  "SQL",
-  "NoSQL",
-  "Cursor",
-  "Langfuse",
-  "SEO",
-  "Meta Ads"
+const skillGroups = [
+  {
+    title: "Languages",
+    skills: ["Python", "JavaScript", "SQL", "NoSQL"],
+  },
+  {
+    title: "AI & LLM",
+    skills: [
+      "LangChain",
+      "LangGraph",
+      "RAG Agents & Chatbots",
+      "Prompt Engineering",
+      "Vector Databases",
+      "MCP Server",
+      "Claude Code",
+      "AI Voice Agents",
+    ],
+  },
+  {
+    title: "Automation & CRM",
+    skills: [
+      "N8N",
+      "Go High Level",
+      "All CRM (Forth etc.)",
+      "Zapier / Make",
+      "Google Sheets Automation",
+    ],
+  },
+  {
+    title: "API & Systems Integration",
+    skills: [
+      "REST API Integrations",
+      "Webhook Development",
+      "Database Integrations",
+      "CRM Integrations",
+      "AI API Integrations",
+      "Payment Workflow Integrations",
+      "Cross-Platform Synchronization",
+      "Third-Party Connections",
+      "Custom Python Scripts",
+    ],
+  },
+  {
+    title: "Tools",
+    skills: ["Docker", "AWS", "Cursor", "Langfuse", "WordPress Dev", "Next.js"],
+  },
+  {
+    title: "Other",
+    skills: [
+      "SEO",
+      "Meta Ads",
+      "Data Scraping",
+      "Workflow Optimization",
+      "Live Transcription Systems",
+    ],
+  },
+  {
+    title: "Professional Skills",
+    skills: [
+      "Teamwork and Collaboration",
+      "Strong Communication",
+      "Problem Solving and Analysis",
+      "Project Management",
+      "Client Relations",
+      "Agile Workflow Management",
+    ],
+  },
 ];
 
 const Skills = () => {
+  const gridRef = useRef<HTMLDivElement>(null);
+  useScrollReveal(gridRef);
+
   return (
     <div className="skills-section section-container" id="skills">
-      <div className="skills-container">
-        <div className="career-heading-wrapper">
-          <div className="career-subheading">
-            <span className="dot pulse-dot"></span>
-            What I Bring
-          </div>
-          <h2 className="career-heading title" data-text="SKILLS">
-            SKILLS
-          </h2>
-          <div className="heading-glow"></div>
-        </div>
+      <h2 className="section-title display">Skills</h2>
 
-        <div className="skills-groups">
-          <div className="skills-group">
-            <h3 className="skills-group-title">
-              <span className="skills-group-dot soft-dot"></span>
-              Professional Skills
-            </h3>
-            <div className="skills-tags">
-              {professionalSkills.map((skill, i) => (
-                <span className="skill-chip skill-chip-soft" key={i}>
+      <div className="skills-grid" ref={gridRef}>
+        {skillGroups.map((group, i) => (
+          <div
+            className="skills-box reveal"
+            key={group.title}
+            style={{ "--reveal-delay": `${(i % 3) * 0.08}s` } as CSSProperties}
+          >
+            <h3 className="skills-box-title">{group.title}</h3>
+            <div className="skills-box-list">
+              {group.skills.map((skill) => (
+                <span className="skills-box-item" key={skill}>
                   {skill}
                 </span>
               ))}
             </div>
           </div>
-
-          <div className="skills-group">
-            <h3 className="skills-group-title">
-              <span className="skills-group-dot tech-dot"></span>
-              Technical Skills
-            </h3>
-            <div className="skills-tags">
-              {technicalSkills.map((skill, i) => (
-                <span className="skill-chip skill-chip-tech" key={i}>
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

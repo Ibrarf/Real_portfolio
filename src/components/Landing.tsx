@@ -1,50 +1,79 @@
-import { PropsWithChildren } from "react";
 import "./styles/Landing.css";
+import { FaWhatsapp, FaLinkedinIn, FaGithub } from "react-icons/fa6";
+import { SiGmail } from "react-icons/si";
+import { TbNotes } from "react-icons/tb";
 
-const Landing = ({ children }: PropsWithChildren) => {
+const Landing = () => {
   return (
-    <>
-      <div className="landing-section" id="landingDiv">
-        <div className="landing-container">
-          <div className="landing-intro">
-            <h2>Hello! I'm</h2>
-            <h1>IBRAHIM</h1>
-
-            {/* Status + Stats — contained within intro block */}
-            <div className="landing-meta">
-              <div className="landing-status">
-                <span className="status-dot"></span>
-                Available for Work
-              </div>
-              <div className="landing-stats-row">
-                <div className="landing-stat-item">
-                  <strong>4</strong>
-                  <span>yrs exp</span>
-                </div>
-                <div className="landing-stat-divider"></div>
-                <div className="landing-stat-item">
-                  <strong>50+</strong>
-                  <span>workflows built</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="landing-info">
-            <h3>An AI Automation</h3>
-            <h2 className="landing-info-h2">
-              <div className="landing-h2-1">Engineer</div>
-              <div className="landing-h2-2">Specialist</div>
-            </h2>
-            <h2>
-              <div className="landing-h2-info">Specialist</div>
-              <div className="landing-h2-info-1">Engineer</div>
-            </h2>
-          </div>
-        </div>
-        {children}
+    <div className="landing-section" id="landingDiv">
+      <div className="hero-watermark hero-watermark-1" aria-hidden="true">
+        <span>{Array(6).fill("AI AUTOMATION ENGINEER").join(" • ")}</span>
       </div>
-    </>
+      <div className="hero-watermark hero-watermark-2" aria-hidden="true">
+        <span>{Array(6).fill("AI SPECIALIST • CRM AUTOMATION").join(" • ")}</span>
+      </div>
+
+      <div className="hero-center">
+        <span className="hero-eyebrow">Hello There, I&apos;m</span>
+        <h1 className="hero-name display">Ibrahim Arif</h1>
+        <p className="hero-tagline">
+          AI Automation Engineer &amp; AI Specialist
+        </p>
+
+        <div className="hero-socials">
+          <a
+            href="https://wa.me/923355026885"
+            target="_blank"
+            rel="noreferrer"
+            className="hero-social-icon"
+            data-cursor="disable"
+            aria-label="WhatsApp"
+          >
+            <FaWhatsapp />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/ibraahimarif/"
+            target="_blank"
+            rel="noreferrer"
+            className="hero-social-icon"
+            data-cursor="disable"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedinIn />
+          </a>
+          <a
+            href="https://github.com/ibrarf"
+            target="_blank"
+            rel="noreferrer"
+            className="hero-social-icon"
+            data-cursor="disable"
+            aria-label="GitHub"
+          >
+            <FaGithub />
+          </a>
+          <a
+            href="mailto:ibrarfv@gmail.com"
+            target="_blank"
+            rel="noreferrer"
+            className="hero-social-icon"
+            data-cursor="disable"
+            aria-label="Email"
+          >
+            <SiGmail />
+          </a>
+          <a
+            href="https://drive.google.com/file/d/1Uu3KFohHXUIE9g3BY-ni3tJWGxG3MePi/view?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+            className="hero-social-icon"
+            data-cursor="disable"
+            aria-label="Resume"
+          >
+            <TbNotes />
+          </a>
+        </div>
+      </div>
+    </div>
   );
 };
 

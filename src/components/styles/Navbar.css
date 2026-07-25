@@ -1,11 +1,11 @@
 .header {
   display: flex;
-  max-width: min(900px, 94%);
+  max-width: 1180px;
   width: 94%;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
-  margin-bottom: -100px;
+  gap: 20px;
+  padding: 10px 10px 10px 20px;
   box-sizing: border-box;
   position: fixed;
   left: 50%;
@@ -13,19 +13,24 @@
   top: 16px;
   z-index: 9999;
 
-  /* ── Glassmorphism pill ── */
-  background: rgba(10, 14, 23, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(94, 234, 212, 0.1);
+  /* ── "Liquid glass" pill: frosted, layered translucency with a soft
+     top highlight and a faint lime-tinted outer glow, instead of a flat
+     tinted rectangle. ── */
   border-radius: 100px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 4px 24px rgba(0, 0, 0, 0.4);
+    0 10px 34px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 0 24px rgba(215, 255, 63, 0.06);
 }
 
 .header ul {
-  font-size: 12px;
+  font-family: "Geist", sans-serif;
+  font-size: 13px;
   display: none;
   flex-direction: column;
   margin: 0;
@@ -38,16 +43,59 @@
 
 .header ul li {
   margin-left: 0px;
-  letter-spacing: 1px;
-  color: #ccc;
-  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: rgba(234, 229, 236, 0.55);
+  font-weight: 500;
   cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.header ul li:hover {
+  color: #eae5ec;
+}
+
+.header ul li.nav-active a {
+  color: var(--accentLime);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .navbar-title {
+  font-family: var(--fontDisplay);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  color: var(--accentLime);
+}
+
+/* ─── CTA pill ─── */
+.header-cta {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 13px;
   font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.2px;
+  color: var(--accentDark);
+  padding: 11px 20px;
+  border-radius: 100px;
+  background: linear-gradient(180deg, #e8ff7a, var(--accentLime));
+  box-shadow:
+    0 4px 16px rgba(215, 255, 63, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.header-cta:hover {
+  transform: translateY(-2px);
+  color: var(--accentDark);
+  box-shadow:
+    0 6px 20px rgba(215, 255, 63, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 /* ─── Hamburger Button ─── */
@@ -89,7 +137,7 @@
 .nav-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.75);
   z-index: 9998;
   backdrop-filter: blur(4px);
 }
@@ -102,8 +150,8 @@
   right: 0;
   width: 260px;
   height: 100vh;
-  background: #0f131c;
-  border-left: 1px solid rgba(94, 234, 212, 0.1);
+  background: #0d0d10;
+  border-left: 1px solid rgba(215, 255, 63, 0.15);
   flex-direction: column;
   padding: 80px 30px 30px;
   gap: 0;
@@ -116,9 +164,9 @@
 .header ul.nav-open li {
   width: 100%;
   padding: 16px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   font-size: 15px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: #eae5ec;
 }
 
@@ -136,34 +184,15 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 13px;
-    column-gap: 25px;
+    font-size: 14px;
+    column-gap: 32px;
   }
 
-  .header ul li {
-    color: #eae5ec;
-  }
-
-  .navbar-title {
-    font-size: 16px;
+  .header-cta {
+    display: flex;
   }
 
   .nav-overlay {
     display: none;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .header {
-    padding: 12px 28px;
-  }
-
-  .header ul {
-    column-gap: 40px;
-    font-size: 13px;
-  }
-
-  .navbar-title {
-    font-size: 16px;
   }
 }
