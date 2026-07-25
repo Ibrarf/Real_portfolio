@@ -11,7 +11,7 @@ import gsap from "gsap";
 export function initialFX(isHome: boolean) {
   if (isHome) {
     gsap.fromTo(
-      [".hero-eyebrow", ".hero-name", ".hero-tagline", ".hero-location"],
+      [".hero-eyebrow", ".hero-name", ".hero-tagline"],
       { opacity: 0, y: 30, filter: "blur(5px)" },
       {
         opacity: 1,

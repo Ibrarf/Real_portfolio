@@ -19,7 +19,6 @@ const Landing = () => {
         <p className="hero-tagline">
           AI Automation Engineer &amp; AI Specialist
         </p>
-        <p className="hero-location">Based in Islamabad, Pakistan — available worldwide</p>
 
         <div className="hero-socials">
           <a

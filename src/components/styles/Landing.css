@@ -129,12 +129,6 @@
   max-width: 380px;
 }
 
-.hero-location {
-  font-size: 13px;
-  color: rgba(234, 229, 236, 0.4);
-  margin: 8px 0 0;
-}
-
 .hero-socials {
   display: flex;
   gap: 12px;
