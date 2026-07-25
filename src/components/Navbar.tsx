@@ -146,6 +146,19 @@ const Navbar = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Keep the URL in sync with whatever section is actually in view, not just
+  // the last one a nav link was clicked for. Without this, scrolling past
+  // Projects by hand (no click) left the URL on "/work" from an earlier
+  // click, so a reload always snapped back to Projects regardless of where
+  // the user had actually scrolled to. replaceState (not pushState) avoids
+  // spamming browser history on every scroll-driven section change.
+  useEffect(() => {
+    const cleanPath = `/${active}`;
+    if (window.location.pathname !== cleanPath) {
+      window.history.replaceState(null, "", cleanPath);
+    }
+  }, [active]);
+
   return (
     <>
       <div className="header">
