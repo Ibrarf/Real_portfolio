@@ -114,7 +114,9 @@ const ACCENTS = ["#d7ff3f", "#4fa8ff", "#b06bff"];
 
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Captions from "yet-another-react-lightbox/plugins/captions";
 import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/captions.css";
 
 const Work = () => {
   const [showAll, setShowAll] = useState(false);
@@ -127,6 +129,8 @@ const Work = () => {
 
   const slides = projects.map((p) => ({
     src: p.isNDA ? "/images/Solidx.webp" : p.image,
+    title: p.title,
+    description: `${p.category} · ${p.tools}`,
   }));
 
   return (
@@ -204,7 +208,8 @@ const Work = () => {
         close={() => setLightboxIndex(-1)}
         index={lightboxIndex}
         slides={slides}
-        plugins={[Zoom]}
+        plugins={[Zoom, Captions]}
+        captions={{ descriptionTextAlign: "center" }}
         zoom={{
           maxZoomPixelRatio: 5,
           zoomInMultiplier: 2,

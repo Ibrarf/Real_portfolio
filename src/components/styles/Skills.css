@@ -23,22 +23,22 @@
 }
 
 .skills-box-title {
-  font-size: 14px;
+  font-size: 12.5px;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--accentLime);
-  margin: 0 0 16px;
+  margin: 0 0 14px;
 }
 
 .skills-box-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 9px;
 }
 
 .skills-box-item {
-  font-size: 14px;
-  padding: 8px 16px;
+  font-size: 12.5px;
+  padding: 7px 14px;
   border-radius: 100px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(234, 229, 236, 0.75);
