@@ -109,17 +109,7 @@
   line-height: 1;
   color: var(--accentLime);
   margin: 0;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .hero-name {
-    animation: hero-glow 4s ease-in-out infinite;
-  }
-}
-
-@keyframes hero-glow {
-  0%, 100% { text-shadow: 0 0 24px rgba(215, 255, 63, 0.15); }
-  50% { text-shadow: 0 0 44px rgba(215, 255, 63, 0.4); }
+  text-shadow: 0 0 30px rgba(215, 255, 63, 0.25);
 }
 
 .hero-tagline {
