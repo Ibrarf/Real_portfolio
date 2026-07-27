@@ -27,6 +27,44 @@
   color: var(--accentLime);
 }
 
+/* ─── Scroll-down indicator ─── */
+.scroll-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid rgba(234, 229, 236, 0.2);
+  border-radius: 50%;
+  color: rgba(234, 229, 236, 0.5);
+  font-size: 22px;
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.scroll-indicator:hover {
+  color: var(--accentLime);
+  border-color: rgba(215, 255, 63, 0.4);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-indicator {
+    animation: scroll-bounce 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
 /* ─── Background watermark rows ─── */
 .hero-watermark {
   position: absolute;

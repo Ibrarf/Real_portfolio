@@ -2,6 +2,8 @@ import "./styles/Landing.css";
 import { FaWhatsapp, FaLinkedinIn, FaGithub } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
 import { TbNotes } from "react-icons/tb";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { smoother } from "./Navbar";
 
 const Landing = () => {
   return (
@@ -73,6 +75,15 @@ const Landing = () => {
           </a>
         </div>
       </div>
+
+      <button
+        className="scroll-indicator"
+        onClick={() => smoother?.scrollTo("#about-me", true, "top 130px")}
+        aria-label="Scroll down"
+        data-cursor="disable"
+      >
+        <MdKeyboardArrowDown />
+      </button>
     </div>
   );
 };

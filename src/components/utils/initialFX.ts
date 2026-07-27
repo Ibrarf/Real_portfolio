@@ -46,6 +46,17 @@ export function initialFX(isHome: boolean) {
         delay: 0.2,
       }
     );
+
+    gsap.fromTo(
+      ".scroll-indicator",
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 1,
+        ease: "power1.inOut",
+        delay: 1.1,
+      }
+    );
   }
 
   gsap.fromTo(
