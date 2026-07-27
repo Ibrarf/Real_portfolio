@@ -64,7 +64,7 @@ const experiences = [
     tools: ["N8N", "Social Media Automation", "CRM", "Email Marketing"],
   },
   {
-    role: "AI Automation & Software Engineer",
+    role: "CRM Specialist, GHL Expert & Automation Engineer",
     company: "Prosperity Solutions",
     location: "USA",
     flag: "us",
@@ -72,11 +72,11 @@ const experiences = [
     year: "2023 to 2024",
     meta: "2023 to 2024 · Contract, Full Time (Remote)",
     desc: [
-      "Built internal systems and automation infrastructure for a debt management company, handling client communication, payment tracking, and compliance reporting.",
-      "Worked extensively with GoHighLevel (GHL), building out funnels, pipelines, automated communication sequences, and full CRM backend automations.",
+      "Worked as a CRM Specialist and GoHighLevel (GHL) Expert for a debt management company, building out funnels, pipelines, automated communication sequences, and full CRM backend automations.",
+      "Built internal automation infrastructure handling client communication, payment tracking, and compliance reporting.",
       "Designed and deployed AI powered virtual assistants that streamlined client onboarding and reduced support ticket volume by 35%.",
     ],
-    tools: ["AI Automation", "GoHighLevel", "CRM Development", "Webhooks"],
+    tools: ["GoHighLevel", "CRM Development", "AI Automation", "Webhooks"],
   },
   {
     role: "Marketing Technology Lead",
