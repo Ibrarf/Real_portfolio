@@ -69,6 +69,7 @@ const WorkImage = (props: Props) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={() => setIsVideo(false)}
         target={isYouTube ? "_blank" : "_self"}
+        rel={isYouTube ? "noreferrer" : undefined}
         data-cursor={isYouTube ? "disable" : "pointer"}
         style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", height: "100%", position: "relative", minWidth: 0, cursor: isYouTube ? "pointer" : "zoom-in" }}
       >
