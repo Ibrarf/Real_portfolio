@@ -111,6 +111,50 @@
   gap: 8px;
 }
 
+/* ─── Multi-position timeline (promotions within the same company) ─── */
+.experience-timeline {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+.experience-position {
+  display: flex;
+  gap: 14px;
+}
+
+.experience-position-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 10px;
+  flex-shrink: 0;
+}
+
+.experience-position-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accentLime);
+  flex-shrink: 0;
+  margin-top: 6px;
+  box-shadow: 0 0 0 3px rgba(215, 255, 63, 0.15);
+}
+
+.experience-position-line {
+  flex: 1;
+  width: 1px;
+  min-height: 24px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 4px 0;
+}
+
+.experience-position-body {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 22px;
+}
+
 .experience-tag {
   font-size: 12.5px;
   padding: 6px 12px;
