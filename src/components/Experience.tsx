@@ -4,7 +4,7 @@ import "./styles/Experience.css";
 
 const experiences = [
   {
-    role: "AI Systems & Automation Engineer",
+    role: "Quality Assurance Automation Engineer",
     company: "Nysonian Inc",
     location: "Toronto",
     flag: "ca",
@@ -12,11 +12,12 @@ const experiences = [
     year: "Current",
     meta: "Islamabad · Current · Full time (On Site)",
     desc: [
+      "Promoted from Automation Engineer to Quality Assurance Automation Engineer, working with N8N, Claude Code, and OpenCode to build automation systems that simplify operations.",
       "Automating HR and Finance operations for a fast scaling US based global lifestyle brand operating across multiple countries.",
-      "Automating finance operations including expense tracking, invoice handling, and reporting pipelines.",
+      "Creating Python based workflows, AI chatbots, and smart pipelines to handle repetitive tasks, expense tracking, invoice handling, and reporting.",
       "Connecting cross departmental tools so HR and Finance data stays accurate and consistent without manual syncing.",
     ],
-    tools: ["AI Systems", "Automation", "HR Ops", "Finance Ops", "Reporting"],
+    tools: ["Quality Assurance", "N8N", "Claude Code", "AI Systems", "Automation", "Python"],
   },
   {
     role: "Senior AI Solutions & Software Engineer",
