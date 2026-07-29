@@ -31,9 +31,10 @@ const experiences: ExperienceEntry[] = [
         meta: "Jun 2026 to Present · Islamabad · Full time (On Site)",
         desc: [
           "Promoted from Automation Engineer to Quality Assurance Automation Engineer, working with N8N, Claude Code, and OpenCode to build automation systems that simplify operations.",
+          "Building a Warehouse Management System (WMS) and internal software tools used daily by multiple teams across the company.",
           "Creating Python based workflows, AI chatbots, and smart pipelines to handle repetitive tasks.",
         ],
-        tools: ["Quality Assurance", "N8N", "Claude Code", "OpenCode"],
+        tools: ["Quality Assurance", "N8N", "Claude Code", "OpenCode", "WMS"],
       },
       {
         role: "Automation Engineer",
